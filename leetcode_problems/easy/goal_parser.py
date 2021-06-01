@@ -18,18 +18,46 @@
 # The final concatenated result is "Goal".
 
 
-def interpret(command):
+#linear space and time
+def slowInterpret(command):
 	h = {'G':'G', '()':'o', '(al)':'al'}
-	result = ''
-	for i in range(len(command)):
-		if command[i] == '(':
-			if command[i+1] == 'a':
-				#incr past 'al)'
-		if c in h:
-			result += h[c]
+	result, i = '', 0
+	while i < len(command):
+		c = command[i]
+		if c == '(':
+			if command[i + 1] == 'a':
+				i += 3	#move past the next 3 chars
+				c = '(al)'
+			else:
+				i += 1	#move past the next char
+				c = '()'
+		result += h[c]
+		i += 1
+		
 
 	return result
 
-command = "G()()()()(al)"
+#linear time; constant space
+def betterInterpret(command):
+	result, i, N = '', 0, len(command)
+	while i < N:
+		if command[i] == 'G':
+			result += 'G'
+		elif command[i+1] == 'a':
+			i += 3
+			result += 'al'
+		else:
+			i += 1
+			result += 'o'
+
+		i += 1
+
+	return result
+
+
+def interpret(command):
+	return command.replace('()', 'o').replace('(al)', 'al')
+
+command = "G()()()()(al)G"
 print(interpret(command))
 
