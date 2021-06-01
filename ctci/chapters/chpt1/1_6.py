@@ -1,5 +1,3 @@
-#INCOMPLETE
-
 #O(N^2) time and constant space
 def rotateMatrix(M):
 	if not M: return False
