@@ -16,7 +16,7 @@ while lst:
 
 #given access to a middle node, 
 #remove that node from the list
-#linear space and time
+#constant space and time
 def deleteMiddleNode(node):
     if not node: return node
 
