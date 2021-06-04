@@ -5,7 +5,6 @@ def maxDepth(s):
 	if len(s) == 1 and (s != ')' or s != '('): return 0	#True cases
 	if not s: return False	#None check
 
-	stack = []
 	m_depth = 0
 	count = 0
 
@@ -15,7 +14,7 @@ def maxDepth(s):
 			m_depth = max(m_depth, count)
 		if c == ')':
 			count -= 1
-			
+
 
 	return m_depth
 
